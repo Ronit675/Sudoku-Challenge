@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import Loginpage from '../pages/Loginpage'
+import Loginpage from '../pages/Login/Loginpage'
 function App() {
 
   return (
