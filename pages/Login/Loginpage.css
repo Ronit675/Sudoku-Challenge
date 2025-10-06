@@ -26,7 +26,7 @@ body{
 }
 .welcome-message{
     position: absolute;
-    top: 20px;
+    top: 170px;
     width: 100%;
     text-align: center;
     color: rgba(255, 255, 255, 0.779);
@@ -140,3 +140,25 @@ body{
         width: calc(100% - 40px);
     }
 }
+
+.signup-prompt{
+    text-align: center;
+    color: #ffffff;  
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.signup-link{
+    color: #ffffff;
+}
+.signup-navlink{
+    color: #d47ae4;
+    text-decoration: none;
+    margin-left: 0.3rem;
+}
+.signup-navlink:hover{
+    text-decoration: underline; 
+}
+
