@@ -1,0 +1,39 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.container{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(169, 145, 169, 0.5);
+}
+.header{
+    font-size: 2.5rem;
+    text-align: center;
+    padding: 1rem;
+    background-color: rgba(139, 107, 152, 0.8);
+    color: rgb(235, 216, 252);
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+}
+.start-button{
+    height: 70px;
+    width: 160px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    background-color: rgb(139, 107, 152);
+    color: rgb(235, 216, 252);
+    border: none;
+    border-radius: 8px;
+}
+.start-button:hover{
+    background-color: rgb(120, 90, 130);
+    cursor: pointer;
+}
+.start-button:active{
+    background-color: rgb(100, 70, 110);
+}
