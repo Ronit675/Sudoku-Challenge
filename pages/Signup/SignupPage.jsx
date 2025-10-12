@@ -24,7 +24,7 @@ const SignupPage = () => {
           </div>
           <div className='login-prompt'>
             <p className='login-link'>Already have an account?</p>
-            <NavLink to="/" className='login-navlink'>
+            <NavLink to="/login" className='login-navlink'>
               <p>Login</p>
             </NavLink>
           </div>
