@@ -3,11 +3,12 @@ import { NavLink } from 'react-router-dom';
 import SudokuGrid from './Components/SudokuGrid';
 import ControlButtons from './Components/ControlButton';
 import MessageBox from './Components/MessageBox';
-import ApiKeyInput from './Components/APIkey';
+import ApiKeyInput from './Components/APIkey/APIkey';
 import { generateNewPuzzle } from './Utils/PuzzleGenerator';
 import { solveSudoku, checkCurrentBoard } from './Utils/SudokuSolver';
 import { getHintFromGemini } from './Utils/GeminiAPI';
 import './Playroom.css';
+import Stopwatch from './Components/Timer/Stopwatch';
 
 const initialPuzzle = [
   [5, 3, 0, 0, 7, 0, 0, 0, 0],
@@ -100,14 +101,14 @@ const Playroom = () => {
 
     try {
       const result = await getHintFromGemini(currentBoard, apiKey);
-      
+
       if (result.success) {
         const newBoard = currentBoard.map(r => [...r]);
         newBoard[result.row][result.col] = result.value;
         setCurrentBoard(newBoard);
-        setMessage({ 
-          text: `Hint: Place ${result.value} at (${result.row + 1}, ${result.col + 1}). ${result.explanation}`, 
-          type: 'success' 
+        setMessage({
+          text: `Hint: Place ${result.value} at (${result.row + 1}, ${result.col + 1}). ${result.explanation}`,
+          type: 'success'
         });
       } else {
         setMessage({ text: result.message, type: 'error' });
@@ -129,34 +130,44 @@ const Playroom = () => {
     <div>
       <div className='header-container'>
         <header>
-            <span className='header-title'>Playroom</span>
+          <span className='header-title'>Playroom</span>
           <NavLink to='/' className='header-link'>
             <button className='Exit-button'>Exit</button>
           </NavLink>
         </header>
       </div>
-
-      <div className="sudoku-container">
-        <h1 className="game-title">Sudoku Game</h1>
-        
-        <ApiKeyInput onSave={handleApiKeySave} />
-        
-        <SudokuGrid 
-          currentBoard={currentBoard}
-          originalBoard={originalBoard}
-          onCellChange={handleCellChange}
-        />
-        
-        <ControlButtons 
-          onNewGame={handleNewGame}
-          onSolve={handleSolve}
-          onGetHint={handleGetHint}
-          onCheck={handleCheck}
-          onClear={handleClear}
-          isHintLoading={isHintLoading}
-        />
-        
+      <div className="message-box-container">
         <MessageBox message={message} />
+      </div>
+      <div className="playroom-container">
+        <div className='left'>
+          <div className="stopwatch-section">
+            <Stopwatch />
+          </div>
+          <div className='api-key-section'>
+            <ApiKeyInput onSave={handleApiKeySave} />
+          </div>
+        </div>
+        <div className="sudoku-container">
+          <h1 className="game-title">Sudoku Game</h1>
+
+
+          <SudokuGrid
+            currentBoard={currentBoard}
+            originalBoard={originalBoard}
+            onCellChange={handleCellChange}
+          />
+
+          <ControlButtons
+            onNewGame={handleNewGame}
+            onSolve={handleSolve}
+            onGetHint={handleGetHint}
+            onCheck={handleCheck}
+            onClear={handleClear}
+            isHintLoading={isHintLoading}
+          />
+
+        </div>
       </div>
     </div>
   );

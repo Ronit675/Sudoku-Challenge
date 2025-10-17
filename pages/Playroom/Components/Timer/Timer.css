@@ -1,0 +1,46 @@
+.TimerContainer{
+    /* Card-like container to match the app's panels */
+    display: inline-block;
+    text-align: center;
+    background-color: #ffffff;
+    padding: 0.6rem 1rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+    min-width: 360px;
+}
+
+.TimerDisplay{
+    font-family: 'monospace', ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Helvetica Neue', monospace;
+    font-size: 3rem; /* 18px */
+    margin-bottom: 0.5rem;
+    color: #111827; /* dark gray */
+    font-weight: 600;
+}
+
+.TimerButton{
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+/* If buttons don't use the global .btn styles, provide a fallback */
+.TimerButton button {
+    min-width: 88px;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.6rem;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.TimerButton button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(16, 24, 40, 0.08);
+}
+
+/* small responsive tweak */
+@media (max-width: 600px) {
+    .TimerContainer { min-width: 120px; }
+    .TimerDisplay { font-size: 1rem; }
+}
